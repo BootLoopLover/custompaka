@@ -11,17 +11,18 @@ PKG_LICENSE_FILES:=LICENSE
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/xray
+define Package/xray-core
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=VPN
   TITLE:=Xray Core (STDSTRX Custom Build)
   URL:=https://github.com/XTLS/Xray-core
+  DEPENDS:=+libpthread +libsodium +libmbedtls
 endef
 
-define Package/xray/description
-  Custom Xray-core build (version 25.10.15-stdrx) by @STDSTRX.
-  This package installs a prebuilt Xray binary, init script, and config files.
+define Package/xray-core/description
+Custom Xray-core build (version 25.10.15-stdrx) by @STDSTRX.
+This package installs a prebuilt Xray binary, init script, and config files.
 endef
 
 define Build/Prepare
@@ -32,7 +33,7 @@ define Build/Compile
 	# Nothing to compile (prebuilt binary)
 endef
 
-define Package/xray/install
+define Package/xray-core/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/xray $(1)/usr/bin/xray
 
@@ -43,5 +44,4 @@ define Package/xray/install
 	$(INSTALL_CONF) ./files/etc/config/xray $(1)/etc/config/xray
 endef
 
-$(eval $(call BuildPackage,xray))
-
+$(eval $(call BuildPackage,xray-core))
