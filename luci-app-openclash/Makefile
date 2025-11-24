@@ -13,8 +13,8 @@ define Package/$(PKG_NAME)
 	SUBMENU:=3. Applications
 	TITLE:=LuCI support for clash
 	PKGARCH:=all
-	DEPENDS:=+luci-compat +dnsmasq-full +bash +curl +ca-bundle +ip-full +ruby \
-		+ruby-yaml +kmod-inet-diag +kmod-nft-tproxy +kmod-tun +unzip
+	DEPENDS:=+luci-compat +dnsmasq-full +bash +curl +ca-bundle +ip-full \
+		+kmod-inet-diag +kmod-nft-tproxy +kmod-tun +unzip
 	MAINTAINER:=vernesong
 endef
 
